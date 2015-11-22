@@ -1,8 +1,5 @@
 import os.path
 
-import sys
-sys.path.append('/Users/nanvel/projects/c2p2')
-
 from c2p2 import app
 from c2p2.settings import settings
 
