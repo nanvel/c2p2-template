@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% end %} - Site name</title>
+    <link type="text/css" href="/engine/templates/style.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <aside>
+      <a href="{{ reverse_url('index') }}" class="home">&#x1f3e1;</a>
+        {% block sidebar %}
+        {% end %}
+      </aside>
+      <section>
+        {% block content %}
+        {% end %}
+      </section>
+      <div style="clear: both;"></div>
+      <footer>Powered by <a href="https://github.com/nanvel/c2p2" target="_blank">c2p2</a>.</footer>
+  </body>
+</html>

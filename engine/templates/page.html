@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ c.page.title }}{% end %}
+
+{% block sidebar %}
+	<div class="sidebar-block">
+		<span class="block-title">Labels</span>
+		<ul class="tags">
+  		{% for label in c.page.labels %}
+      	<li><a href="{{ reverse_url('label', label.slug) }}">{{ label.title }}</a></li>
+  		{% end %}
+  	</ul>
+  </div>
+  <div class="sidebar-block">
+  	<span class="block-title">Created</span>
+  	<time datetime="{{ c.page.created.strftime('%Y-%M-%d') }}" pubdate>{{ c.page.created.strftime('%B %d, %Y') }}</time>
+  </div>
+  {% if c.page.created != c.page.modified %}
+  	<div class="sidebar-block">
+  		<span class="block-title">Modified</span>
+  		<time datetime="{{ c.page.modified.strftime('%Y-%M-%d') }}">{{ c.page.modified.strftime('%B %d, %Y') }}</time>
+  	</div>
+  {% end %}
+  {% if c.page.meta.place %}
+  	<div class="sidebar-block">
+  		<span class="block-title">Place</span>
+  		{{ c.page.meta.place }}
+  	</div>
+  {% end %}
+  <div class="sidebar-block">
+  	<span class="block-title">Edit</span>
+  	<a href="https://github.com/nanvel/c2p2_template/blob/master/{{ c.page.uri }}.md" target="_blank">&#x270D; edit on GitHub</a>
+  </div>
+{% end %}
+{% block content %}
+  <article>
+    {% raw c.page.html %}
+    <time datetime="{{ c.page.created.strftime('%Y-%M-%d') }}" pubdate></time>
+  </article>
+{% end %}
